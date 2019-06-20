@@ -1,0 +1,8 @@
+
+#! /bin/bash
+## Save output in the mounted volume for now, later to be pushed to graphite
+## 
+sqlplus_cmd="/usr/bin/sqlplus64"
+logfile=/sessions_tmp.log
+date >> $logfile
+echo "select count(*) from gv\$session where username='CMS_RUCIO_DEV_ADMIN';" | $sqlplus_cmd -S ${DBSECRET} >> $logfile
